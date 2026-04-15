@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Data Insight - Smart Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">AUTOMATED ANALYTICS STUDIO</p>
+          <h1>데이터를 넣으면 즉시 분석, 시각화, 알고리즘을 추천합니다.</h1>
+          <p class="hero-copy">CSV, XLSX, JSON, XML 등 모든 데이터의 컬럼 특성을 자동으로 파악하여 분석합니다. 데이터 정제 과정과 통계적 요약, 그리고 최적의 알고리즘을 제안합니다.</p>
+        </div>
+        <div class="hero-card">
+          <div class="section-head">
+            <h2>데이터 분석 시작하기</h2>
+            <p>파일을 업로드하면 즉시 분석 결과와 추천 모델을 생성합니다.</p>
+          </div>
+          <label class="dropzone" for="fileInput" id="dropzone">
+            <input id="fileInput" type="file" accept=".csv,.xlsx,.json,.xml" />
+            <span class="dropzone-title">데이터 파일을 여기로 드래그하세요</span>
+            <span class="dropzone-subtitle">CSV, XLSX, JSON, XML 지원</span>
+          </label>
+          <div class="file-meta" id="fileMeta">파일이 선택되지 않았습니다.</div>
+          <div class="actions">
+            <button class="ghost" id="loadSampleBtn">예시 데이터 바로 분석</button>
+            <button class="ghost" id="resetBtn">초기화</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel sample-panel">
+          <div class="section-head">
+            <h2>샘플 데이터 다운로드</h2>
+            <p>버튼을 클릭하면 무작위로 생성된 샘플 파일을 다운로드하고 구조를 미리 봅니다.</p>
+          </div>
+          <div class="sample-grid">
+            <button data-format="csv">CSV 다운로드</button>
+            <button data-format="xlsx">XLSX 다운로드</button>
+            <button data-format="json">JSON 다운로드</button>
+            <button data-format="xml">XML 다운로드</button>
+          </div>
+          <pre id="samplePreview" class="sample-preview"></pre>
+        </section>
+
+        <section class="panel summary-panel">
+          <div class="section-head">
+            <h2>데이터 요약 및 알고리즘 추천</h2>
+          </div>
+          <div id="summaryCards" class="summary-cards"></div>
+          <div id="insightText" class="insight-text empty-state">분석이 시작되면 추천 알고리즘과 인사이트가 여기에 표시됩니다.</div>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="section-head">
+            <h2>데이터 시각화</h2>
+            <p>데이터 컬럼 특성에 맞춰 최적의 차트를 생성합니다.</p>
+          </div>
+          <div id="chartArea" class="chart-area empty-state">분석된 데이터가 존재하지 않습니다.</div>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="section-head">
+            <h2>데이터 미리보기 (상위 10개)</h2>
+          </div>
+          <div id="tablePreview" class="table-preview empty-state">데이터를 불러오면 표 형식으로 확인 가능합니다.</div>   
+        </section>
+      </main>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
